@@ -5,7 +5,7 @@ variable "name" {
 
 variable "version" {
   type    = string
-  default = "20230129.0"
+  default = "20230201.0"
 }
 
 variable "cpu" {
@@ -66,7 +66,7 @@ source "qemu" "centos9s" {
   machine_type	   = "pc"
   memory           = var.ram
   net_device       = "virtio-net"
-  output_directory = "artifacts/"
+  output_directory = "artifacts/${var.name}/"
   qemu_binary      = "/usr/libexec/qemu-kvm"
   qemuargs         = [
     ["-m", "${var.ram}M"],
@@ -88,20 +88,20 @@ build {
     post-processor "shell-local" {
       inline = [
         "set -eu",
-        "virt-sysprep --operations defaults,-ssh-userdir,-customize -a artifacts/${var.name}",
-        "virt-sparsify --in-place artifacts/${var.name}",
-        "qemu-img convert -f qcow2 -O qcow2 -c artifacts/${var.name} artifacts/${var.name}_${var.version}.img",
+        "virt-sysprep --operations defaults,-ssh-userdir,-customize -a artifacts/${var.name}/${var.name}",
+        "virt-sparsify --in-place artifacts/${var.name}/${var.name}",
+        "qemu-img convert -f qcow2 -O qcow2 -c artifacts/${var.name}/${var.name} artifacts/${var.name}/${var.name}_${var.version}.img",
         ]
     }
     post-processor "vagrant" {
       keep_input_artifact = true
       compression_level   = 9
-      output = "artifacts/${var.name}_vagrant_{{.Provider}}_${var.version}.box"
+      output = "artifacts/${var.name}/${var.name}_vagrant_{{.Provider}}_${var.version}.box"
       provider_override   = "libvirt"
     }
     post-processor "shell-local" {
       inline = [
-        "bash scripts/metadata.bash ${var.name} ${var.version} artifacts/${var.name}_vagrant_libvirt_${var.version}.box > artifacts/metadata.json"
+        "bash scripts/metadata.bash ${var.name} ${var.version} artifacts/${var.name}/${var.name}_vagrant_libvirt_${var.version}.box > artifacts/${var.name}/metadata.json"
         ]
     }
   }
