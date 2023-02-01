@@ -1,3 +1,8 @@
+variable "name" {
+  type    = string
+  default = "centos9s"
+}
+
 variable "version" {
   type    = string
   default = "20230129.0"
@@ -43,9 +48,9 @@ variable "ssh_username" {
   default = "vagrant"
 }
 
-source "qemu" "centos9" {
+source "qemu" "centos9s" {
   accelerator      = "kvm"
-  boot_command     = ["<tab> inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos9.cfg<enter><wait>"]
+  boot_command     = ["<tab> inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos9s.cfg<enter><wait>"]
   boot_wait        = "10s"
   cpus             = var.cpu
   disk_cache       = "none"
@@ -73,30 +78,31 @@ source "qemu" "centos9" {
   ssh_password     = var.ssh_password
   ssh_timeout      = "20m"
   ssh_username     = var.ssh_username
-  vm_name          = "centos9"
+  vm_name          = var.name
 }
 
 build {
-  sources = ["source.qemu.centos9"]
+  sources = ["source.qemu.centos9s"]
 
   post-processors {
     post-processor "shell-local" {
       inline = [
         "set -eu",
-        "virt-sysprep --operations defaults,-ssh-userdir,-customize -a artifacts/centos9",
-        "virt-sparsify --in-place artifacts/centos9",
-        "qemu-img convert -f qcow2 -O qcow2 -c artifacts/centos9 artifacts/centos9_${var.version}.img",
+        "virt-sysprep --operations defaults,-ssh-userdir,-customize -a artifacts/${var.name}",
+        "virt-sparsify --in-place artifacts/${var.name}",
+        "qemu-img convert -f qcow2 -O qcow2 -c artifacts/${var.name} artifacts/${var.name}_${var.version}.img",
         ]
     }
     post-processor "vagrant" {
       keep_input_artifact = true
       compression_level   = 9
-      output = "artifacts/centos9_vagrant_{{.Provider}}_${var.version}.box"
+      output = "artifacts/${var.name}_vagrant_{{.Provider}}_${var.version}.box"
       provider_override   = "libvirt"
     }
-    post-processor "manifest" {
-      output = "manifest.json"
-      strip_path = true
+    post-processor "shell-local" {
+      inline = [
+        "bash scripts/metadata.bash ${var.name} ${var.version} artifacts/${var.name}_vagrant_libvirt_${var.version}.box > artifacts/metadata.json"
+        ]
     }
   }
 }
