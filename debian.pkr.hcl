@@ -5,7 +5,7 @@ variable "name" {
 
 variable "version" {
   type    = string
-  default = "11.6.0-0"
+  default = "11.6.0-1"
 }
 
 variable "cpu" {
@@ -90,7 +90,7 @@ build {
     post-processor "shell-local" {
       inline = [
         "set -eu",
-        "virt-sysprep --operations defaults,-ssh-userdir,-customize -a artifacts/${var.name}/${var.name}",
+        "virt-sysprep --operations defaults,-ssh-userdir,-ssh-hostkeys,-customize -a artifacts/${var.name}/${var.name}",
         "virt-sparsify --in-place artifacts/${var.name}/${var.name}",
         "qemu-img convert -f qcow2 -O qcow2 -c artifacts/${var.name}/${var.name} artifacts/${var.name}/${var.name}_${var.version}.img",
         ]

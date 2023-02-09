@@ -5,5 +5,5 @@ centos:
 	CHECKPOINT_DISABLE=1 PACKER_LOG=1 packer build centos.pkr.hcl
 
 debian:
-	rm -rf artifacts/debian
+	rm -rf artifacts/debian11
 	CHECKPOINT_DISABLE=1 PACKER_LOG=1 packer build debian.pkr.hcl
