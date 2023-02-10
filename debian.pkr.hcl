@@ -5,7 +5,7 @@ variable "name" {
 
 variable "version" {
   type    = string
-  default = "11.6.0-1"
+  default = "11.6.0-2"
 }
 
 variable "cpu" {
@@ -85,6 +85,13 @@ source "qemu" "debian11" {
 
 build {
   sources = ["source.qemu.debian11"]
+
+  provisioner "shell" {
+    execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
+    scripts          = [
+      "scripts/debian.bash"
+    ]
+  }
 
   post-processors {
     post-processor "shell-local" {
