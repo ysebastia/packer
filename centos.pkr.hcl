@@ -5,7 +5,7 @@ variable "name" {
 
 variable "version" {
   type    = string
-  default = "20230207.0"
+  default = "20230216.0"
 }
 
 variable "cpu" {
@@ -25,12 +25,12 @@ variable "headless" {
 
 variable "iso_checksum" {
   type    = string
-  default = "sha256:22bca6643b8660f64ddb18b810955ce925eb131085e3cf5c0766679ddc4fd73d"
+  default = "sha256:8caa8fde81ea992e9a727b7d736ca61a6d197f6dbf8bfcbe9ff4f60a50bc111c"
 }
 
 variable "iso_url" {
   type    = string
-  default = "file:///var/lib/libvirt/images/CentOS-Stream-9-20230207.0-x86_64-boot.iso"
+  default = "file:///var/lib/libvirt/images/CentOS-Stream-9-20230216.0-x86_64-boot.iso"
 }
 
 variable "ram" {
