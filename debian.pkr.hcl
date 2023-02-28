@@ -5,7 +5,7 @@ variable "name" {
 
 variable "version" {
   type    = string
-  default = "11.6.0-2"
+  default = "11.6.0-3"
 }
 
 variable "cpu" {
