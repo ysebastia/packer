@@ -5,7 +5,7 @@ variable "name" {
 
 variable "version" {
   type    = string
-  default = "20230216.0"
+  default = "20230227.0"
 }
 
 variable "cpu" {
@@ -25,12 +25,12 @@ variable "headless" {
 
 variable "iso_checksum" {
   type    = string
-  default = "sha256:8caa8fde81ea992e9a727b7d736ca61a6d197f6dbf8bfcbe9ff4f60a50bc111c"
+  default = "sha256:a90bdc7be5296614430b962c6d440bcadc5511d977908886f40811473dc5b40c"
 }
 
 variable "iso_url" {
   type    = string
-  default = "file:///var/lib/libvirt/images/CentOS-Stream-9-20230216.0-x86_64-boot.iso"
+  default = "file:///var/lib/libvirt/images/CentOS-Stream-9-20230227.0-x86_64-boot.iso"
 }
 
 variable "ram" {
@@ -60,7 +60,7 @@ source "qemu" "centos9s" {
   disk_size        = var.disk_size
   format           = "qcow2"
   headless         = var.headless
-  http_directory   = "http"
+  http_directory   = "http/centos"
   iso_checksum     = var.iso_checksum
   iso_url          = var.iso_url
   machine_type	   = "pc"
