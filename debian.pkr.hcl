@@ -18,6 +18,10 @@ variable "iso_url" {
   type = string
 }
 
+variable "provisioner_shell" {
+  type = string
+}
+
 variable "ssh_password" {
   type = string
 }
@@ -74,9 +78,7 @@ build {
 
   provisioner "shell" {
     execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
-    scripts          = [
-      "scripts/debian.bash"
-    ]
+    scripts         = [ "${var.provisioner_shell}" ]
   }
 
   post-processors {

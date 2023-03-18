@@ -18,6 +18,10 @@ variable "iso_url" {
   type = string
 }
 
+variable "provisioner_shell" {
+  type = string
+}
+
 variable "ssh_password" {
   type = string
 }
@@ -71,6 +75,11 @@ source "qemu" "alma" {
 
 build {
   sources = ["source.qemu.alma"]
+
+  provisioner "shell" {
+    execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
+    scripts         = [ "${var.provisioner_shell}" ]
+  }
 
   post-processors {
     post-processor "shell-local" {
