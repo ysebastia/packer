@@ -98,7 +98,8 @@ build {
     }
     post-processor "shell-local" {
       inline = [
-        "bash scripts/metadata.bash ${var.name} ${var.version} artifacts/${var.name}/${var.name}_vagrant_libvirt_${var.version}.box > artifacts/${var.name}/metadata.json"
+        "bash scripts/metadata.bash ${var.name} ${var.version} artifacts/${var.name}/${var.name}_vagrant_libvirt_${var.version}.box > artifacts/${var.name}/metadata.json",
+        "rm -f artifacts/${var.name}/${var.name}"
         ]
     }
   }
