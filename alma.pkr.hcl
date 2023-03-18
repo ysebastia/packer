@@ -1,76 +1,50 @@
 variable "name" {
   type    = string
-  default = "alma9"
 }
 
 variable "version" {
   type    = string
-  default = "9.1-0"
-}
-
-variable "cpu" {
-  type    = string
-  default = "1"
-}
-
-variable "disk_size" {
-  type    = string
-  default = "20G"
-}
-
-variable "headless" {
-  type    = string
-  default = "false"
 }
 
 variable "iso_checksum" {
   type    = string
-  default = "sha256:9f22bd98c8930b1d0b2198ddd273c6647c09298e10a0167197a3f8c293d03090"
 }
 
 variable "iso_url" {
   type    = string
-  default = "file:///var/lib/libvirt/images/AlmaLinux-9.1-x86_64-boot.iso"
-}
-
-variable "ram" {
-  type    = string
-  default = "2048"
 }
 
 variable "ssh_password" {
   type    = string
-  default = "vagrant"
 }
 
 variable "ssh_username" {
   type    = string
-  default = "vagrant"
 }
 
 source "qemu" "alma9" {
   accelerator      = "kvm"
   boot_command     = ["<tab> inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/alma9.cfg<enter><wait>"]
   boot_wait        = "10s"
-  cpus             = var.cpu
+  cpus             = "1"
   disk_cache       = "none"
   disk_compression = true
   disk_discard     = "unmap"
   disk_interface   = "virtio"
-  disk_size        = var.disk_size
+  disk_size        = "20G"
   format           = "qcow2"
-  headless         = var.headless
+  headless         = false
   http_directory   = "http/alma"
   iso_checksum     = var.iso_checksum
   iso_url          = var.iso_url
   machine_type	   = "pc"
-  memory           = var.ram
+  memory           = "2048"
   net_device       = "virtio-net"
   output_directory = "artifacts/${var.name}/"
   qemu_binary      = "/usr/libexec/qemu-kvm"
   qemuargs         = [
-    ["-m", "${var.ram}M"],
-    ["-smp", "${var.cpu}"],
+    ["-m", "2048M"],
+    ["-smp", "1"],
     ["-cpu", "host,+nx"],
     ["-display", "none"]
   ]
