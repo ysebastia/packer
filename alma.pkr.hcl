@@ -30,7 +30,7 @@ variable "vnc_port" {
   type = string
 }
 
-source "qemu" "alma9" {
+source "qemu" "alma" {
   accelerator      = "kvm"
   boot_command     = [var.boot_command]
   boot_wait        = "10s"
@@ -66,7 +66,7 @@ source "qemu" "alma9" {
 }
 
 build {
-  sources = ["source.qemu.alma9"]
+  sources = ["source.qemu.alma"]
 
   post-processors {
     post-processor "shell-local" {

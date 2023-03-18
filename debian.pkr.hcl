@@ -30,7 +30,7 @@ variable "vnc_port" {
   type = string
 }
 
-source "qemu" "debian11" {
+source "qemu" "debian" {
   accelerator      = "kvm"
   boot_command     = [var.boot_command]
   boot_wait        = "10s"
@@ -66,7 +66,7 @@ source "qemu" "debian11" {
 }
 
 build {
-  sources = ["source.qemu.debian11"]
+  sources = ["source.qemu.debian"]
 
   provisioner "shell" {
     execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
