@@ -1,30 +1,34 @@
+variable "boot_command" {
+  type = string
+}
+
 variable "name" {
-  type    = string
+  type = string
 }
 
 variable "version" {
-  type    = string
+  type = string
 }
 
 variable "iso_checksum" {
-  type    = string
+  type = string
 }
 
 variable "iso_url" {
-  type    = string
+  type = string
 }
 
 variable "ssh_password" {
-  type    = string
+  type = string
 }
 
 variable "ssh_username" {
-  type    = string
+  type = string
 }
 
 source "qemu" "alma9" {
   accelerator      = "kvm"
-  boot_command     = ["<tab> inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/alma9.cfg<enter><wait>"]
+  boot_command     = [var.boot_command]
   boot_wait        = "10s"
   cpus             = "1"
   disk_cache       = "none"

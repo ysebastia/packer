@@ -1,32 +1,34 @@
+variable "boot_command" {
+  type = string
+}
+
 variable "name" {
-  type    = string
+  type = string
 }
 
 variable "version" {
-  type    = string
+  type = string
 }
 
 variable "iso_checksum" {
-  type    = string
+  type = string
 }
 
 variable "iso_url" {
-  type    = string
+  type = string
 }
 
 variable "ssh_password" {
-  type    = string
+  type = string
 }
 
 variable "ssh_username" {
-  type    = string
+  type = string
 }
 
 source "qemu" "debian11" {
   accelerator      = "kvm"
-  boot_command     = [
-    "<esc><wait>auto preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter>"
-  ]
+  boot_command     = [var.boot_command]
   boot_wait        = "10s"
   cpus             = "1"
   disk_cache       = "none"
