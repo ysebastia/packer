@@ -13,7 +13,7 @@ alma_install:
 
 debian_build:
 	rm -rf artifacts/debian11
-	CHECKPOINT_DISABLE=1 packer build debian.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="debian.pkrvars.hcl" debian.pkr.hcl
 	
 debian_install:
 	cd artifacts/debian11 && vagrant box add metadata.json --force

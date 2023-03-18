@@ -1,51 +1,25 @@
 variable "name" {
   type    = string
-  default = "debian11"
 }
 
 variable "version" {
   type    = string
-  default = "11.6.0-3"
-}
-
-variable "cpu" {
-  type    = string
-  default = "1"
-}
-
-variable "disk_size" {
-  type    = string
-  default = "20G"
-}
-
-variable "headless" {
-  type    = string
-  default = "false"
 }
 
 variable "iso_checksum" {
   type    = string
-  default = "sha256:e482910626b30f9a7de9b0cc142c3d4a079fbfa96110083be1d0b473671ce08d"
 }
 
 variable "iso_url" {
   type    = string
-  default = "file:///var/lib/libvirt/images/debian-11.6.0-amd64-netinst.iso"
-}
-
-variable "ram" {
-  type    = string
-  default = "2048"
 }
 
 variable "ssh_password" {
   type    = string
-  default = "vagrant"
 }
 
 variable "ssh_username" {
   type    = string
-  default = "vagrant"
 }
 
 source "qemu" "debian11" {
@@ -54,25 +28,25 @@ source "qemu" "debian11" {
     "<esc><wait>auto preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter>"
   ]
   boot_wait        = "10s"
-  cpus             = var.cpu
+  cpus             = "1"
   disk_cache       = "none"
   disk_compression = true
   disk_discard     = "unmap"
   disk_interface   = "virtio"
-  disk_size        = var.disk_size
+  disk_size        = "20G"
   format           = "qcow2"
-  headless         = var.headless
+  headless         = false
   http_directory   = "http/debian11"
   iso_checksum     = var.iso_checksum
   iso_url          = var.iso_url
   machine_type	   = "pc"
-  memory           = var.ram
+  memory           = "2048"
   net_device       = "virtio-net"
   output_directory = "artifacts/${var.name}/"
   qemu_binary      = "/usr/libexec/qemu-kvm"
   qemuargs         = [
-    ["-m", "${var.ram}M"],
-    ["-smp", "${var.cpu}"],
+    ["-m", "2048M"],
+    ["-smp", "1"],
     ["-cpu", "host,+nx"],
     ["-display", "none"]
   ]
