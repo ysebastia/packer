@@ -1,14 +1,14 @@
 all: alma debian
 
-alma: alma_build alma_install
+alma9: alma9_build alma9_install
 
 debian: debian_build debian_install
 
-alma_build:
+alma9_build:
 	rm -rf artifacts/alma9
-	CHECKPOINT_DISABLE=1 packer build -var-file="alma.pkrvars.hcl"  vagrant.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="alma9.pkrvars.hcl" vagrant.pkr.hcl
 
-alma_install:
+alma9_install:
 	cd artifacts/alma9 && vagrant box add metadata.json --force
 
 debian_build:
