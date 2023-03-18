@@ -12,7 +12,7 @@ alma8_build:
 	rm -rf artifacts/alma8
 	CHECKPOINT_DISABLE=1 packer build -var-file="alma8.pkrvars.hcl" vagrant.pkr.hcl
 
-alma98_install:
+alma8_install:
 	cd artifacts/alma8 && vagrant box add metadata.json --force
 
 alma9_build:
