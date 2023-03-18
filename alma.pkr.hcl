@@ -26,6 +26,10 @@ variable "ssh_username" {
   type = string
 }
 
+variable "vnc_port" {
+  type = string
+}
+
 source "qemu" "alma9" {
   accelerator      = "kvm"
   boot_command     = [var.boot_command]
@@ -57,6 +61,8 @@ source "qemu" "alma9" {
   ssh_timeout      = "20m"
   ssh_username     = var.ssh_username
   vm_name          = var.name
+  vnc_port_min     = var.vnc_port
+  vnc_port_max     = var.vnc_port
 }
 
 build {
