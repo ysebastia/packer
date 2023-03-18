@@ -42,7 +42,7 @@ source "qemu" "debian11" {
   disk_size        = "20G"
   format           = "qcow2"
   headless         = false
-  http_directory   = "http/debian11"
+  http_directory   = "http/${var.name}"
   iso_checksum     = var.iso_checksum
   iso_url          = var.iso_url
   machine_type	   = "pc"
