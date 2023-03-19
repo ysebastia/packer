@@ -2,6 +2,11 @@ variable "boot_command" {
   type = string
 }
 
+variable "disk_size" {
+  type = string
+  default = "20G"
+}
+
 variable "iso_checksum" {
   type = string
 }
@@ -47,7 +52,7 @@ source "qemu" "vagrant" {
   disk_compression = true
   disk_discard     = "unmap"
   disk_interface   = "virtio"
-  disk_size        = "20G"
+  disk_size        = var.disk_size
   format           = "qcow2"
   headless         = false
   http_directory   = "http/${var.name}"
