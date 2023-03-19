@@ -51,7 +51,7 @@ source "qemu" "vagrant" {
   accelerator      = "kvm"
   boot_command     = [var.boot_command]
   boot_wait        = "10s"
-  cpus             = "1"
+  cpus             = 1
   disk_cache       = "none"
   disk_compression = true
   disk_discard     = "unmap"
@@ -64,13 +64,13 @@ source "qemu" "vagrant" {
   iso_checksum     = var.iso_checksum
   iso_url          = var.iso_url
   machine_type	   = "pc"
-  memory           = "2048"
+  memory           = 2048
   net_device       = "virtio-net"
   output_directory = "artifacts/${var.name}/"
   qemu_binary      = "/usr/libexec/qemu-kvm"
   qemuargs         = [
     ["-m", "2048M"],
-    ["-smp", "1"],
+    ["-smp", 1],
     ["-cpu", "host,+nx"],
     ["-display", "none"]
   ]
