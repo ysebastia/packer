@@ -2,6 +2,10 @@ variable "boot_command" {
   type = string
 }
 
+variable "disk_image" {
+  type = string
+}
+
 variable "disk_size" {
   type = string
   default = "20G"
@@ -51,6 +55,7 @@ source "qemu" "vagrant" {
   disk_cache       = "none"
   disk_compression = true
   disk_discard     = "unmap"
+  disk_image       = var.disk_image
   disk_interface   = "virtio"
   disk_size        = var.disk_size
   format           = "qcow2"
