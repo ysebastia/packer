@@ -8,6 +8,8 @@ alma9: alma9_build alma9_install
 
 debian: debian_build debian_install
 
+ubuntu: ubuntu_build
+
 alma8_build:
 	rm -rf artifacts/alma8
 	CHECKPOINT_DISABLE=1 packer build -var-file="alma8.pkrvars.hcl" vagrant.pkr.hcl
@@ -28,6 +30,14 @@ debian_build:
 	
 debian_install:
 	cd artifacts/debian11 && vagrant box add metadata.json --force
+
+ubuntu_build:
+	rm -rf artifacts/ubuntu
+	CHECKPOINT_DISABLE=1 packer build -var-file="ubuntu.pkrvars.hcl" terraform.pkr.hcl
+
+ubuntu_install:
+	chmod 755 artifacts/ubuntu/*.img
+	sudo cp artifacts/ubuntu/*.img /var/lib/libvirt/images/
 
 vagrant_prune:
 	vargrant box prune

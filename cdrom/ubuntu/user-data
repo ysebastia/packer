@@ -1,0 +1,14 @@
+#cloud-config
+users:
+  - name: packer
+    plain_text_passwd: packer
+    groups: users, admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: false
+ssh_pwauth: true
+keyboard:
+  layout: fr
+packages:
+  - python3
+  - qemu-guest-agent
