@@ -2,19 +2,15 @@ variable "boot_command" {
   type = string
 }
 
-variable "name" {
-  type = string
-}
-
-variable "version" {
-  type = string
-}
-
 variable "iso_checksum" {
   type = string
 }
 
 variable "iso_url" {
+  type = string
+}
+
+variable "name" {
   type = string
 }
 
@@ -31,6 +27,10 @@ variable "ssh_username" {
 }
 
 variable "sysprep" {
+  type = string
+}
+
+variable "version" {
   type = string
 }
 
