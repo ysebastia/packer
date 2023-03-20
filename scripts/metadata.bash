@@ -8,8 +8,8 @@ jq -n \
   --monochrome-output \
   --arg name "$BOX_NAME" \
   --arg version "$BOX_VERSION" \
-  --arg file "$(basename $BOX_FILE)" \
-  --arg checksum "$(sha256sum $BOX_FILE | cut -f 1 -d " ")" \
+  --arg file "$(basename "$BOX_FILE")" \
+  --arg checksum "$(sha256sum "$BOX_FILE" | cut -f 1 -d " ")" \
   '{
   name: $name,
   "versions": [
