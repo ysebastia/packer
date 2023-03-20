@@ -23,7 +23,7 @@ pipeline {
   agent any
   environment {
     QUALITY_YAML = "1"
-    QUALITY_SHELL = "86"
+    QUALITY_SHELL = "1"
   }
   stages {
     stage('QA') {
