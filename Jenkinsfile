@@ -18,10 +18,18 @@ def shellcheck(quality) {
   archiveArtifacts artifacts: 'shellcheck.xml', followSymlinks: false
   sh 'rm shellcheck.xml'
 }
+def tflint(quality) {
+  sh 'touch tflint.xml'
+  sh 'tflint ./ -f checkstyle | tee -a  tflint.xml'
+  recordIssues qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]], tools: [checkStyle(id: 'tflint', name: 'TFLint', pattern: 'tflint.xml')]
+  archiveArtifacts artifacts: 'tflint.xml', followSymlinks: false
+  sh 'rm tflint.xml'
+}
 
 pipeline {
   agent any
   environment {
+    QUALITY_TERRAFORM = "1"
     QUALITY_YAML = "1"
     QUALITY_SHELL = "1"
   }
@@ -58,6 +66,16 @@ pipeline {
           steps {
             yamllint(QUALITY_YAML)
           }
+        }
+        stage ('tflint') {
+            agent {
+                docker {
+                      image 'ysebastia/tflint:0.45.0'
+                  }
+          }
+            steps {
+                tflint(QUALITY_TERRAFORM)
+            }
         }
       }
     }
