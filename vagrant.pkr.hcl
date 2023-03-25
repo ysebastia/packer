@@ -60,7 +60,7 @@ source "qemu" "vagrant" {
   disk_size        = var.disk_size
   format           = "qcow2"
   headless         = false
-  http_directory   = "http/${var.name}"
+  http_directory   = "files/http/${var.name}"
   iso_checksum     = var.iso_checksum
   iso_url          = var.iso_url
   machine_type	   = "pc"

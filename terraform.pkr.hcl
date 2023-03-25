@@ -41,7 +41,7 @@ variable "vnc_port" {
 
 source "qemu" "terraform" {
   accelerator      = "kvm"
-  cd_files         = ["./cdrom/${var.name}/*"]
+  cd_files         = ["./files/cdrom/${var.name}/*"]
   cd_label         = "cidata"
   cpus             = 2
   disk_cache       = "none"
