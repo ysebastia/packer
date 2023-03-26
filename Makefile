@@ -36,8 +36,8 @@ ubuntu_cloud_build:
 	CHECKPOINT_DISABLE=1 packer build -var-file="ubuntu-server-cloudimg-amd64.pkrvars.hcl" terraform.pkr.hcl
 
 ubuntu_cloud_install:
-	chmod 755 artifacts/ubuntu/*.img
-	sudo cp artifacts/ubuntu/*.img /var/lib/libvirt/images/
+	chmod 755 artifacts/ubuntu-server-cloudimg-amd64/*.img
+	sudo cp artifacts/ubuntu-server-cloudimg-amd64/*.img /var/lib/libvirt/images/
 
 vagrant_prune:
 	vargrant box prune
