@@ -8,4 +8,4 @@ ssh_password      = "vagrant"
 ssh_username      = "vagrant"
 sysprep           = "defaults,-ssh-userdir,-customize"
 version           = "9.1-0"
-vnc_port          = "5901"
+vnc_port          = 5901

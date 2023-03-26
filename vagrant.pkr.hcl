@@ -44,7 +44,7 @@ variable "version" {
 }
 
 variable "vnc_port" {
-  type = string
+  type = number
 }
 
 source "qemu" "vagrant" {
