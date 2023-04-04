@@ -24,6 +24,15 @@ alma9_build:
 alma9_install:
 	cd artifacts/alma9 && vagrant box add metadata.json --force
 
+alma9_up:
+	cd vagrant/alma9 && vagrant up
+
+alma9_ssh:
+	cd vagrant/alma9 && vagrant ssh
+
+alma9_destroy:
+	cd vagrant/alma9 && vagrant destroy
+
 debian_build:
 	rm -rf artifacts/debian11
 	CHECKPOINT_DISABLE=1 packer build -var-file="debian1.pkrvars.hcl" vagrant.pkr.hcl
