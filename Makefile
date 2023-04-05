@@ -6,7 +6,9 @@ alma8: alma8_build alma8_install
 
 alma9: alma9_build alma9_install
 
-debian: debian_build debian_install
+debian: debian11
+
+debian11: debian11_build debian11_install
 
 ubuntu: ubuntu_cloud_build ubuntu_cloud_install
 
@@ -42,11 +44,11 @@ alma9_ssh:
 alma9_destroy:
 	cd vagrant/alma9 && vagrant destroy
 
-debian_build:
+debian11_build:
 	rm -rf artifacts/debian11
-	CHECKPOINT_DISABLE=1 packer build -var-file="debian1.pkrvars.hcl" vagrant.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="debian11.pkrvars.hcl" vagrant.pkr.hcl
 	
-debian_install:
+debian11_install:
 	cd artifacts/debian11 && vagrant box add metadata.json --force
 
 ubuntu_cloud_build:
