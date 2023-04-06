@@ -10,6 +10,15 @@ debian: debian11
 
 debian11: debian11_build debian11_install
 
+debian11_up:
+	cd vagrant/debian11 && vagrant up
+
+debian11_ssh:
+	cd vagrant/debian11 && vagrant ssh
+
+debian11_destroy:
+	cd vagrant/debian11 && vagrant destroy
+
 ubuntu: ubuntu_cloud_build ubuntu_cloud_install
 
 alma8_build:
