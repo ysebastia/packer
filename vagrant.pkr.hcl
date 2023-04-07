@@ -69,8 +69,6 @@ source "qemu" "vagrant" {
   output_directory = "artifacts/${var.name}/"
   qemu_binary      = "/usr/libexec/qemu-kvm"
   qemuargs         = [
-    ["-m", "2048M"],
-    ["-smp", 1],
     ["-cpu", "host,+nx"],
     ["-display", "none"]
   ]
