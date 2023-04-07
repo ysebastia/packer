@@ -1,5 +1,5 @@
 variable "boot_command" {
-  type = string
+  type = list(string)
 }
 
 variable "disk_image" {
@@ -49,7 +49,7 @@ variable "vnc_port" {
 
 source "qemu" "vagrant" {
   accelerator      = "kvm"
-  boot_command     = [var.boot_command]
+  boot_command     = var.boot_command
   boot_wait        = "10s"
   cpus             = 1
   disk_cache       = "none"
