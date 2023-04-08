@@ -68,5 +68,21 @@ ubuntu_cloud_install:
 	chmod 755 artifacts/ubuntu-server-cloudimg-amd64/*.img
 	sudo cp artifacts/ubuntu-server-cloudimg-amd64/*.img /var/lib/libvirt/images/
 
+ubuntu2204_build:
+	rm -rf artifacts/ubuntu2204
+	CHECKPOINT_DISABLE=1 packer build -var-file="ubuntu2204.pkrvars.hcl" vagrant.pkr.hcl
+
+ubuntu2204_install:
+	cd artifacts/ubuntu2204 && vagrant box add metadata.json --force
+
+ubuntu2204_up:
+	cd vagrant/ubuntu2204 && vagrant up
+
+ubuntu2204_ssh:
+	cd vagrant/ubuntu2204 && vagrant ssh
+
+ubuntu2204_destroy:
+	cd vagrant/ubuntu2204 && vagrant destroy
+
 vagrant_prune:
 	vargrant box prune
