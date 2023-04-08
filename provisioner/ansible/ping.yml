@@ -1,0 +1,6 @@
+---
+- name: Provisioning
+  hosts: all
+  tasks:
+    - name: Just a ping
+      ansible.builtin.ping:

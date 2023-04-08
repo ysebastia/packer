@@ -20,7 +20,7 @@ variable "name" {
 }
 
 variable "provisioner_shell" {
-  type = string
+  type = list(string)
 }
 
 variable "ssh_password" {
@@ -79,7 +79,7 @@ build {
 
   provisioner "shell" {
     execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
-    scripts         = [ "${var.provisioner_shell}" ]
+    scripts         = var.provisioner_shell
   }
 
   post-processors {
