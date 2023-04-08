@@ -5,5 +5,5 @@ name              = "ubuntu-server-cloudimg-amd64"
 provisioner_shell = ["provisioner/scripts/ubuntu.bash"]
 ssh_password      = "packer"
 ssh_username      = "packer"
-version           = "20230317-0"
+version           = "20230401-0"
 vnc_port          = 5904

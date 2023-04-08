@@ -20,7 +20,7 @@ variable "gw" {
 }
 variable "image" {
   type = string
-  default = "/var/lib/libvirt/images/jammy-server-cloudimg-amd64.img"
+  default = "/var/lib/libvirt/images/jammy-server-cloudimg-amd64_20230401.img"
 }
 variable "proxy" {
   type = string
