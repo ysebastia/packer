@@ -15,10 +15,8 @@ ssh_pwauth: true
 disable_root: false
 packages:
   - qemu-guest-agent
-  - python3
 apt:
   http_proxy: ${proxy}
   https_proxy: ${proxy}
 runcmd:
   - systemctl start qemu-guest-agent
-  - systemctl restart sshd

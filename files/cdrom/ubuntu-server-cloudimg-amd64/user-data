@@ -9,6 +9,9 @@ users:
 ssh_pwauth: true
 keyboard:
   layout: fr
+package_update: true
+package_upgrade: true
 packages:
-  - python3
   - qemu-guest-agent
+runcmd:
+  - apt-get clean
