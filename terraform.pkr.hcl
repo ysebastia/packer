@@ -19,6 +19,11 @@ variable "name" {
   type = string
 }
 
+variable "provisioner_ansible" {
+  type = string
+  default = "provisioner/ansible/ping.yml"
+}
+
 variable "provisioner_shell" {
   type = list(string)
 }
@@ -77,6 +82,10 @@ source "qemu" "terraform" {
 build {
   sources = ["source.qemu.terraform"]
 
+  provisioner "ansible" {
+    playbook_file   = var.provisioner_ansible
+    extra_arguments = ["--scp-extra-args", "'-O'"]
+  }
   provisioner "shell" {
     execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
     scripts         = var.provisioner_shell
