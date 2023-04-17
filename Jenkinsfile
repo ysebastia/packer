@@ -7,21 +7,21 @@ def cloc() {
 def yamllint(quality) {
   sh 'touch yamllint.txt'
   sh 'yamllint -f parsable . | tee -a yamllint.txt'
-  recordIssues qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]],  tools: [yamlLint(id: 'yamlLint', name: 'Yaml Lint', pattern: 'yamllint.txt')]
+  recordIssues enabledForFailure: true, qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]],  tools: [yamlLint(id: 'yamlLint', name: 'Yaml Lint', pattern: 'yamllint.txt')]
   archiveArtifacts artifacts: 'yamllint.txt', followSymlinks: false
   sh 'rm yamllint.txt'
 }
 def shellcheck(quality) {
   sh 'touch shellcheck.xml'
   sh '/usr/local/bin/shellcheck.bash | tee -a shellcheck.xml'
-  recordIssues qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]], tools: [checkStyle(id: 'shellcheck', name: 'Shellcheck', pattern: 'shellcheck.xml')]
+  recordIssues enabledForFailure: true, qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]], tools: [checkStyle(id: 'shellcheck', name: 'Shellcheck', pattern: 'shellcheck.xml')]
   archiveArtifacts artifacts: 'shellcheck.xml', followSymlinks: false
   sh 'rm shellcheck.xml'
 }
 def tflint(quality) {
   sh 'touch tflint.xml'
   sh 'tflint ./ -f checkstyle | tee -a  tflint.xml'
-  recordIssues qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]], tools: [checkStyle(id: 'tflint', name: 'TFLint', pattern: 'tflint.xml')]
+  recordIssues enabledForFailure: true, qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]], tools: [checkStyle(id: 'tflint', name: 'TFLint', pattern: 'tflint.xml')]
   archiveArtifacts artifacts: 'tflint.xml', followSymlinks: false
   sh 'rm tflint.xml'
 }
