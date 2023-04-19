@@ -7,5 +7,5 @@ provisioner_shell = ["provisioner/scripts/debian.bash"]
 ssh_password      = "vagrant"
 ssh_username      = "vagrant"
 sysprep           = "defaults,-ssh-userdir,-ssh-hostkeys,-customize"
-version           = "11.6.0-3"
+version           = "11.6.0-20230419.0"
 vnc_port          = 5902

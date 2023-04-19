@@ -17,5 +17,5 @@ provisioner_shell = ["provisioner/scripts/dummy.bash"]
 ssh_password      = "vagrant"
 ssh_username      = "vagrant"
 sysprep           = "defaults,-ssh-userdir,-ssh-hostkeys,-customize"
-version           = "22.04.2-0"
+version           = "22.04.2-20230419.0"
 vnc_port          = 5905
