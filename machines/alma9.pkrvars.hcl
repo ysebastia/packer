@@ -7,5 +7,5 @@ provisioner_shell = ["provisioner/scripts/alma.bash"]
 ssh_password      = "vagrant"
 ssh_username      = "vagrant"
 sysprep           = "defaults,-ssh-userdir,-customize"
-version           = "9.1-0"
+version           = "9.1-20230419.0"
 vnc_port          = 5901
