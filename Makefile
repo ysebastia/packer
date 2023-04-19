@@ -23,7 +23,7 @@ ubuntu: ubuntu_cloud_build ubuntu_cloud_install
 
 alma8_build:
 	rm -rf artifacts/alma8
-	CHECKPOINT_DISABLE=1 packer build -var-file="alma8.pkrvars.hcl" vagrant.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="machines/alma8.pkrvars.hcl" vagrant.pkr.hcl
 
 alma8_install:
 	cd artifacts/alma8 && vagrant box add metadata.json --force
@@ -39,7 +39,7 @@ alma8_destroy:
 
 alma9_build:
 	rm -rf artifacts/alma9
-	CHECKPOINT_DISABLE=1 packer build -var-file="alma9.pkrvars.hcl" vagrant.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="machines/alma9.pkrvars.hcl" vagrant.pkr.hcl
 
 alma9_install:
 	cd artifacts/alma9 && vagrant box add metadata.json --force
@@ -55,14 +55,14 @@ alma9_destroy:
 
 debian11_build:
 	rm -rf artifacts/debian11
-	CHECKPOINT_DISABLE=1 packer build -var-file="debian11.pkrvars.hcl" vagrant.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="machines/debian11.pkrvars.hcl" vagrant.pkr.hcl
 	
 debian11_install:
 	cd artifacts/debian11 && vagrant box add metadata.json --force
 
 ubuntu_cloud_build:
 	rm -rf artifacts/ubuntu-server-cloudimg-amd64
-	CHECKPOINT_DISABLE=1 packer build -var-file="ubuntu-server-cloudimg-amd64.pkrvars.hcl" terraform.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="machines/ubuntu-server-cloudimg-amd64.pkrvars.hcl" terraform.pkr.hcl
 
 ubuntu_cloud_install:
 	chmod 755 artifacts/ubuntu-server-cloudimg-amd64/*.img
@@ -70,7 +70,7 @@ ubuntu_cloud_install:
 
 ubuntu2204_build:
 	rm -rf artifacts/ubuntu2204
-	CHECKPOINT_DISABLE=1 packer build -var-file="ubuntu2204.pkrvars.hcl" vagrant.pkr.hcl
+	CHECKPOINT_DISABLE=1 packer build -var-file="machines/ubuntu2204.pkrvars.hcl" vagrant.pkr.hcl
 
 ubuntu2204_install:
 	cd artifacts/ubuntu2204 && vagrant box add metadata.json --force
