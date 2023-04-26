@@ -93,7 +93,7 @@ build {
   provisioner "ansible" {
     playbook_file          = var.provisioner_ansible
     extra_arguments        = ["--scp-extra-args", "'-O'"]
-    ansible_ssh_extra_args = ["-o", "PubkeyAcceptedKeyTypes=+ssh-rsa"]
+    ansible_ssh_extra_args = ["-o IdentitiesOnly=yes -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostkeyAlgorithms=+ssh-rsa"]
   }
   provisioner "shell" {
     execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
