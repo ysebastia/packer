@@ -91,8 +91,9 @@ build {
   sources = ["source.qemu.vagrant"]
 
   provisioner "ansible" {
-    playbook_file   = var.provisioner_ansible
-    extra_arguments = ["--scp-extra-args", "'-O'"]
+    playbook_file          = var.provisioner_ansible
+    extra_arguments        = ["--scp-extra-args", "'-O'"]
+    ansible_ssh_extra_args = ["-o", "PubkeyAcceptedKeyTypes=+ssh-rsa"]
   }
   provisioner "shell" {
     execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
