@@ -82,7 +82,7 @@ source "qemu" "vagrant" {
   ssh_timeout      = "20m"
   ssh_username     = var.ssh_username
   vm_name          = var.name
-  vnc_bind_address = 0.0.0.0
+  vnc_bind_address = "0.0.0.0"
   vnc_port_min     = var.vnc_port
   vnc_port_max     = var.vnc_port
 }
