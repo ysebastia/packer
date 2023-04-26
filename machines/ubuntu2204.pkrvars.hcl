@@ -18,4 +18,4 @@ ssh_password      = "vagrant"
 ssh_username      = "vagrant"
 sysprep           = "defaults,-ssh-userdir,-ssh-hostkeys,-customize"
 version           = "22.04.2-20230419.0"
-vnc_port          = 5905
+vnc_port          = 5995

@@ -6,4 +6,4 @@ provisioner_shell = ["provisioner/scripts/ubuntu.bash"]
 ssh_password      = "packer"
 ssh_username      = "packer"
 version           = "20230401-0"
-vnc_port          = 5904
+vnc_port          = 5994
