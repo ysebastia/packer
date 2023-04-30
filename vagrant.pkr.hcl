@@ -91,9 +91,13 @@ build {
   sources = ["source.qemu.vagrant"]
 
   provisioner "ansible" {
-    playbook_file          = var.provisioner_ansible
-    extra_arguments        = ["--scp-extra-args", "'-O'"]
-    ansible_ssh_extra_args = ["-o IdentitiesOnly=yes -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostkeyAlgorithms=+ssh-rsa"]
+    playbook_file    = var.provisioner_ansible
+    extra_arguments  = ["--scp-extra-args", "'-O'"]
+    ansible_env_vars = [
+      "ANSIBLE_SSH_ARGS='-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=ssh-rsa'",
+      "ANSIBLE_HOST_KEY_CHECKING=False"
+    ]
+    user = var.ssh_username
   }
   provisioner "shell" {
     execute_command = "{{ .Vars }} sudo -S -E bash '{{ .Path }}'"
