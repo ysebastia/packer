@@ -105,7 +105,6 @@ build {
         "set -eu",
         "virt-sysprep --operations ${var.sysprep} -a artifacts/${var.name}/${var.name}",
         "virt-sparsify --in-place artifacts/${var.name}/${var.name}",
-        "qemu-img convert -f qcow2 -O qcow2 -c artifacts/${var.name}/${var.name} artifacts/${var.name}/${var.name}_${var.version}.img",
         ]
     }
     post-processor "vagrant" {
