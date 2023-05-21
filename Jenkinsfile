@@ -59,7 +59,7 @@ pipeline {
             shellcheck(QUALITY_SHELL)
           }
         }
-        stage ('Yaml lint') {
+        stage ('yamllint') {
           agent {
             docker {
               label 'docker'
