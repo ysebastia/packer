@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.nfs.functional = false
-  config.vm.box = "debian11"
-  config.vm.box_version = "11.6.0-20230419.0"
+  config.vm.box = "debian12"
+  config.vm.box_version = "12.0.0-20230611.0"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 end

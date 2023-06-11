@@ -6,18 +6,18 @@ alma8: alma8_build alma8_install
 
 alma9: alma9_build alma9_install
 
-debian: debian11
+debian: debian12
 
-debian11: debian11_build debian11_install
+debian12: debian12_build debian12_install
 
-debian11_up:
-	cd vagrant/debian11 && vagrant up
+debian12_up:
+	cd vagrant/debian12 && vagrant up
 
-debian11_ssh:
-	cd vagrant/debian11 && vagrant ssh
+debian12_ssh:
+	cd vagrant/debian12 && vagrant ssh
 
-debian11_destroy:
-	cd vagrant/debian11 && vagrant destroy
+debian12_destroy:
+	cd vagrant/debian12 && vagrant destroy
 
 ubuntu: ubuntu_cloud_build ubuntu_cloud_install
 
@@ -53,12 +53,12 @@ alma9_ssh:
 alma9_destroy:
 	cd vagrant/alma9 && vagrant destroy
 
-debian11_build:
-	rm -rf artifacts/debian11
-	CHECKPOINT_DISABLE=1 packer build -var-file="machines/debian11.pkrvars.hcl" vagrant.pkr.hcl
+debian12_build:
+	rm -rf artifacts/debian12
+	CHECKPOINT_DISABLE=1 packer build -var-file="machines/debian12.pkrvars.hcl" vagrant.pkr.hcl
 	
-debian11_install:
-	cd artifacts/debian11 && vagrant box add metadata.json --force
+debian12_install:
+	cd artifacts/debian12 && vagrant box add metadata.json --force
 
 ubuntu_cloud_build:
 	rm -rf artifacts/ubuntu-server-cloudimg-amd64
