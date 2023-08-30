@@ -20,7 +20,7 @@ def shellcheck(quality) {
 }
 def tflint(quality) {
   sh 'touch tflint.xml'
-  sh 'tflint ./ -f checkstyle | tee -a  tflint.xml'
+  sh 'tflint --recursive --format=checkstyle | tee -a  tflint.xml'
   recordIssues enabledForFailure: true, qualityGates: [[threshold: quality, type: 'TOTAL', unstable: false]], tools: [checkStyle(id: 'tflint', name: 'TFLint', pattern: 'tflint.xml')]
   archiveArtifacts artifacts: 'tflint.xml', followSymlinks: false
   sh 'rm tflint.xml'
