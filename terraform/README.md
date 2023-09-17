@@ -2,25 +2,25 @@
 
 Initialize :
 ```
-$ terraform init
+terraform init
 ```
 
 Plan :
 ```
-$ terraform plan
+terraform plan
 ```
 
 Apply :
 ```
-$ terraform apply
+terraform apply
 ```
 
 Destroy :
 ```
-$ terraform destroy
+terraform destroy
 ```
 
 Apply and create multiple VM at once :
 ```
-$ terraform apply --var="nb_vm=3"
+terraform apply --var="nb_vm=3"
 ```
