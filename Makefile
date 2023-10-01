@@ -17,7 +17,9 @@ debian12_ssh:
 debian12_destroy:
 	cd vagrant/debian12 && vagrant destroy
 
-ubuntu: ubuntu_cloud_build ubuntu_cloud_install
+ubuntu_cloud: ubuntu_cloud_build ubuntu_cloud_install
+
+ubuntu_server: ubuntu2204_build ubuntu2204_install
 
 alma9_build:
 	rm -rf artifacts/alma9
