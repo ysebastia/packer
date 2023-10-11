@@ -52,14 +52,14 @@ resource "libvirt_domain" "vm_domain" {
   name = "vm${count.index + 1}"
   memory = 2048
   vcpu = 1
-  qemu_agent = true
+  qemu_agent = false
 
   disk {
        volume_id = libvirt_volume.vm_os[count.index].id
   }
   network_interface {
        network_name = "terraform_network"
-       wait_for_lease = true
+       wait_for_lease = false
   }
 
   cloudinit = libvirt_cloudinit_disk.vm_commoninit[count.index].id
@@ -74,21 +74,5 @@ resource "libvirt_domain" "vm_domain" {
     type = "vnc"
     listen_type = "address"
     autoport = "true"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "cloud-init status --wait",
-    ]
-
-    connection {
-      host     = self.network_interface[0].addresses[0]
-      type     = "ssh"
-      user     = var.user
-      private_key = file(var.private_key)
-    }
-  }
-  provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ${var.user} -i '${self.network_interface[0].addresses[0]},' --private-key ${var.private_key} -e 'pub_key=${var.public_key}' ping.yml"
   }
 }
