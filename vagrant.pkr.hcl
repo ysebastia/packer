@@ -119,11 +119,9 @@ build {
   post-processors {
     post-processor "shell-local" {
       inline = [
-        "set -eu",
-        "virt-sysprep --operations ${var.sysprep} -a artifacts/${var.name}/${var.name}",
-        "virt-sparsify --in-place artifacts/${var.name}/${var.name}",
+        "bash scripts/sysprep.bash ${var.name} ${var.sysprep}"
         ]
-    }
+    }    
     post-processor "vagrant" {
       keep_input_artifact = true
       compression_level   = 9
