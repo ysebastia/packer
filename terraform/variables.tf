@@ -1,7 +1,3 @@
-variable "private_key" {
-  type = string
-  default = "~/.ssh/id_ecdsa"
-}
 variable "public_key" {
   type = string
   default = "~/.ssh/id_ecdsa.pub"
