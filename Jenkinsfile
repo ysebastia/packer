@@ -89,7 +89,7 @@ pipeline {
             agent {
                 docker {
                       label 'docker'
-                      image 'ysebastia/tflint:0.50.0'
+                      image 'ysebastia/tflint:0.50.1'
                   }
           }
             steps {
