@@ -1,6 +1,8 @@
 def checkov() {
-    sh 'checkov --soft-fail --directory . -o junitxml --output-file-path build/checkov --skip-download'
-    junit allowEmptyResults: true, skipPublishingChecks: true, testResults: 'build/checkov/results_junitxml.xml'
+  sh 'checkov --soft-fail --directory . -o junitxml --output-file-path build/checkov --skip-download'
+  recordIssues enabledForFailure: true, tools: [junitParser(id: 'checkov', name: 'Checkov', pattern: 'build/checkov/results_junitxml.xml')]
+  archiveArtifacts artifacts: 'build/checkov/results_junitxml.xml', followSymlinks: false
+  sh 'rm build/checkov/results_junitxml.xml'    
 }
 def cloc() {
   sh 'cloc --by-file --xml --fullpath --not-match-d="(build|vendor)" --out=cloc.xml ./'
