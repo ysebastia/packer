@@ -1,11 +1,11 @@
 boot_command      = ["<esc><wait>auto preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter>"]
 disk_image        = false
-iso_checksum      = "sha256:64d727dd5785ae5fcfd3ae8ffbede5f40cca96f1580aaa2820e8b99dae989d94"
-iso_url           = "file:///var/lib/libvirt/images/debian-12.4.0-amd64-netinst.iso"
+iso_checksum      = "sha256:6013f5b44670d81280b5b1bc02455842b250df2f0c6763398feb69af1a805a14f"
+iso_url           = "file:///var/lib/libvirt/images/debian-12.5.0-amd64-netinst.iso"
 name              = "debian12"
 provisioner_shell = ["provisioner/scripts/debian.bash"]
 ssh_password      = "vagrant"
 ssh_username      = "vagrant"
 sysprep           = "defaults,-ssh-userdir,-ssh-hostkeys,-customize"
-version           = "12.4.0-20231214.0"
+version           = "12.5.0-20240217.0"
 vnc_port          = 5992
