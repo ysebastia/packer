@@ -57,7 +57,7 @@ pipeline {
           agent {
             docker {
               label 'docker'
-              image 'ysebastia/cloc:1.98'
+              image 'ysebastia/cloc:2.00'
             }
           }
           steps {
