@@ -1,6 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 Vagrant.configure("2") do |config|
-  config.nfs.functional = false
   config.vm.box = "ubuntu2204"
   config.vm.box_version = "22.04.2-20230419.0"
+  
+  config.nfs.functional = false
   config.vm.synced_folder ".", "/vagrant", disabled: true
 end
