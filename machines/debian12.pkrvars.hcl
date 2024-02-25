@@ -1,6 +1,6 @@
 boot_command      = ["<esc><wait>auto preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter>"]
 disk_image        = false
-iso_checksum      = "sha256:6013f5b44670d81280b5b1bc02455842b250df2f0c6763398feb69af1a805a14f"
+iso_checksum      = "sha256:013f5b44670d81280b5b1bc02455842b250df2f0c6763398feb69af1a805a14f"
 iso_url           = "file:///var/lib/libvirt/images/debian-12.5.0-amd64-netinst.iso"
 name              = "debian12"
 provisioner_shell = ["provisioner/scripts/debian.bash"]
