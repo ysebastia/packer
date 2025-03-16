@@ -80,7 +80,7 @@ pipeline {
           agent {
             docker {
               label 'docker'
-              image 'ysebastia/yamllint:1.35.1'
+              image 'ysebastia/yamllint:1.36.1'
             }
           }
           steps {
