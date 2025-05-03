@@ -45,7 +45,6 @@ pipeline {
         stage ('checkov') {
           agent {
             docker {
-              label 'docker'
               image 'ysebastia/checkov:3.2.413'
             }
           }
@@ -56,7 +55,6 @@ pipeline {
         stage ('Cloc') {
           agent {
             docker {
-              label 'docker'
               image 'ysebastia/cloc:2.04'
             }
           }
@@ -68,7 +66,6 @@ pipeline {
         stage ('shellcheck') {
           agent {
             docker {
-              label 'docker'
               image 'ysebastia/shellcheck:0.9.0-r2'
             }
           }
@@ -79,7 +76,6 @@ pipeline {
         stage ('yamllint') {
           agent {
             docker {
-              label 'docker'
               image 'ysebastia/yamllint:1.37.0'
             }
           }
@@ -90,7 +86,6 @@ pipeline {
         stage ('tflint') {
             agent {
                 docker {
-                      label 'docker'
                       image 'ysebastia/tflint:0.56.0'
                   }
           }
