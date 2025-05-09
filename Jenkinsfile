@@ -86,7 +86,7 @@ pipeline {
         stage ('tflint') {
             agent {
                 docker {
-                      image 'ysebastia/tflint:0.56.0'
+                      image 'ysebastia/tflint:0.57.0'
                   }
           }
             steps {
