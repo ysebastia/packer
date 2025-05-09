@@ -76,7 +76,7 @@ pipeline {
         stage ('yamllint') {
           agent {
             docker {
-              image 'ysebastia/yamllint:1.37.0'
+              image 'ysebastia/yamllint:1.37.1'
             }
           }
           steps {
