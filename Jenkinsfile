@@ -45,7 +45,7 @@ pipeline {
         stage ('checkov') {
           agent {
             docker {
-              image 'ysebastia/checkov:3.2.413'
+              image 'ysebastia/checkov:3.2.451'
             }
           }
           steps {
