@@ -1,9 +1,0 @@
-disk_image        = true
-iso_checksum      = "sha256:31cd56b1448f201602facb3a9d110af3aefe2401d7c002500ef08ec7a00ca4f5"
-iso_url           = "file:///var/lib/libvirt/images/jammy-server-cloudimg-amd64.img"
-name              = "ubuntu-server-cloudimg-amd64"
-provisioner_shell = ["provisioner/scripts/ubuntu.bash"]
-ssh_password      = "packer"
-ssh_username      = "packer"
-version           = "20230401-0"
-vnc_port          = 5994
