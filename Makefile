@@ -1,4 +1,4 @@
-all: alma debian
+all: alma debian ubuntu
 
 alma: alma9
 
@@ -7,6 +7,10 @@ alma9: alma9_build alma9_install
 debian: debian13
 
 debian13: debian13_build debian13_install
+
+ubuntu: ubuntu24
+
+ubuntu24: ubuntu24_build ubuntu24_install
 
 debian13_up:
 	cd vagrant/debian13 && vagrant up
@@ -40,5 +44,21 @@ debian13_build:
 debian13_install:
 	cd artifacts/debian13 && vagrant box add metadata.json --force
 
+ubuntu24_build:
+	rm -rf artifacts/ubuntu24
+	CHECKPOINT_DISABLE=1 /usr/bin/packer build -var-file="machines/ubuntu24.pkrvars.hcl" vagrant.pkr.hcl
+	
+ubuntu24_install:
+	cd artifacts/ubuntu24 && vagrant box add metadata.json --force
+
+ubuntu24_up:
+	cd vagrant/ubuntu24 && vagrant up
+
+ubuntu24_ssh:
+	cd vagrant/ubuntu24 && vagrant ssh
+
+ubuntu24_destroy:
+	cd vagrant/ubuntu24 && vagrant destroy
+
 vagrant_prune:
-	vargrant box prune
+	vagrant box prune

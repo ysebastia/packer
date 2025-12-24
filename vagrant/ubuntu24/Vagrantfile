@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu24"  # Nom de la box vagrant à utiliser
+  config.vm.box_check_update = false
+  config.vm.box_version = "24.04.3-20251224.0"
+
+  config.nfs.functional = false
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.define "vm1" do |guest|
+  	guest.vm.hostname = "vm1.vagrant.devel"  # Nom d'hôte du serveur
+  end
+
+  # https://vagrant-libvirt.github.io/vagrant-libvirt/configuration.html
+  config.vm.provider "libvirt" do |guest|
+    guest.default_prefix = "ubuntu24_"
+    guest.cpus = "1"
+    guest.memory = "2048"
+  end
+end
