@@ -2,7 +2,7 @@ boot_command     = [
     "c<wait>",
     "set gfxpayload=keep",
     "<enter><wait>",
-    "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/\" net.ifnames=0 ipv6.disable=1 biosdevname=0",
+    "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/\" net.ifnames=0 biosdevname=0",
     "<enter><wait>",
     "initrd /casper/initrd",
     "<enter><wait>",

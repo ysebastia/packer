@@ -41,7 +41,7 @@ autoinstall:
     - sed -i -e 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config
     - echo 'PubkeyAcceptedKeyTypes=+ssh-rsa' >> /target/etc/ssh/sshd_config
     - echo 'vagrant ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/vagrant
-    - sed -ie 's/GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="net.ifnames=0 ipv6.disable=1 biosdevname=0"/' /target/etc/default/grub
+    - sed -ie 's/GRUB_CMDLINE_LINUX=.*/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/' /target/etc/default/grub
     - curtin in-target --target /target update-grub2
     - curtin in-target --target /target apt-get clean
     - swapoff -a
