@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
   config.nfs.functional = false
-  config.vm.box = "debian12"
-  config.vm.box_version = "12.1.0-20230917.0"
+  config.vm.box = "debian13"
+  config.vm.box_version = "13.2.0-20251224.0"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 end

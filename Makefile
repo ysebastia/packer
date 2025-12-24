@@ -4,22 +4,22 @@ alma: alma9
 
 alma9: alma9_build alma9_install
 
-debian: debian12
+debian: debian13
 
-debian12: debian12_build debian12_install
+debian13: debian13_build debian13_install
 
-debian12_up:
-	cd vagrant/debian12 && vagrant up
+debian13_up:
+	cd vagrant/debian13 && vagrant up
 
-debian12_ssh:
-	cd vagrant/debian12 && vagrant ssh
+debian13_ssh:
+	cd vagrant/debian13 && vagrant ssh
 
-debian12_destroy:
-	cd vagrant/debian12 && vagrant destroy
+debian13_destroy:
+	cd vagrant/debian13 && vagrant destroy
 
 alma9_build:
 	rm -rf artifacts/alma9
-	CHECKPOINT_DISABLE=1 packer build -var-file="machines/alma9.pkrvars.hcl" vagrant.pkr.hcl
+	CHECKPOINT_DISABLE=1 n/packer build -var-file="machines/alma9.pkrvars.hcl" vagrant.pkr.hcl
 
 alma9_install:
 	cd artifacts/alma9 && vagrant box add metadata.json --force
@@ -33,12 +33,12 @@ alma9_ssh:
 alma9_destroy:
 	cd vagrant/alma9 && vagrant destroy
 
-debian12_build:
-	rm -rf artifacts/debian12
-	CHECKPOINT_DISABLE=1 packer build -var-file="machines/debian12.pkrvars.hcl" vagrant.pkr.hcl
+debian13_build:
+	rm -rf artifacts/debian13
+	CHECKPOINT_DISABLE=1 /usr/bin/packer build -var-file="machines/debian13.pkrvars.hcl" vagrant.pkr.hcl
 	
-debian12_install:
-	cd artifacts/debian12 && vagrant box add metadata.json --force
+debian13_install:
+	cd artifacts/debian13 && vagrant box add metadata.json --force
 
 vagrant_prune:
 	vargrant box prune
